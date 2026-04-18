@@ -669,6 +669,23 @@
     .event-title { font-size: 1.7rem; }
     .event-meta-row { gap: .5rem; }
     .meta-chip { font-size: 12px; padding: 6px 10px; }
+
+    /*
+     * FIX DROPDOWN MÓVIL:
+     * En móvil, .nav-tabs tiene overflow-x: auto, lo que por regla CSS
+     * también convierte overflow-y en auto, recortando el dropdown
+     * absolutamente posicionado. Usando position: fixed el dropdown
+     * escapa del contexto de overflow y se posiciona respecto al viewport.
+     * top: 107px = altura del topbar en móvil (brand 64px + borde 1px + nav 42px)
+     */
+    .dropdown {
+      position: fixed;
+      top: 107px;
+      left: 0;
+      right: 0;
+      min-width: 100%;
+      border-radius: 0 0 var(--radius) var(--radius);
+    }
   }
 
   /* Mobile pequeño */
