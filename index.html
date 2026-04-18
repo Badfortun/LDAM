@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>[LDAM] Legión del Amanecer — Portal de Alianza</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -120,7 +120,7 @@
   .nav-icon { font-size: 14px; }
 
   /* ───── MAIN LAYOUT ───── */
-  .page { display: none; padding: 2.5rem 2rem 5rem; max-width: 1200px; margin: 0 auto; }
+  .page { display: none; padding: 2.5rem 2rem 5rem; max-width: 1200px; margin: 0 auto; width: 100%; box-sizing: border-box; }
   .page.active { display: block; }
 
   /* ───── EVENT HERO ───── */
@@ -625,17 +625,62 @@
   ::-webkit-scrollbar-thumb { background: var(--border-hi); border-radius: 4px; }
 
   /* ───── RESPONSIVE ───── */
+
+  /* Tablet */
   @media (max-width: 900px) {
     .section-grid { grid-template-columns: 1fr 1fr; }
     .section-grid.cols-1-2 { grid-template-columns: 1fr; }
+    .page { padding: 1.5rem 1.25rem 4rem; }
   }
 
+  /* Mobile grande */
   @media (max-width: 640px) {
     .section-grid { grid-template-columns: 1fr; }
-    .nav-tabs li a { padding: 0 12px; font-size: 11px; }
     .damage-number { font-size: 2.2rem; }
     .week-calendar { grid-template-columns: repeat(4, 1fr); }
+
+    /* Topbar: logo + nombre apilado, tabs debajo */
+    .topbar {
+      height: auto;
+      flex-direction: column;
+      align-items: stretch;
+      padding: 0;
+    }
+    .topbar-brand {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .brand-text { font-size: 14px; }
+    .nav-tabs {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      width: 100%;
+    }
+    .nav-tabs::-webkit-scrollbar { display: none; }
+    .nav-tabs li a {
+      padding: 0 14px;
+      font-size: 11px;
+      white-space: nowrap;
+      height: 42px;
+    }
+    .page { padding: 1rem 0.75rem 3rem; }
+    .event-hero { padding: 1.25rem; }
+    .event-title { font-size: 1.7rem; }
+    .event-meta-row { gap: .5rem; }
+    .meta-chip { font-size: 12px; padding: 6px 10px; }
   }
+
+  /* Mobile pequeño */
+  @media (max-width: 400px) {
+    .brand-text { font-size: 12px; }
+    .topbar-brand img { width: 34px; height: 34px; }
+    .event-title { font-size: 1.4rem; }
+    .nav-tabs li a { padding: 0 10px; font-size: 10px; }
+  }
+
+  /* Imagen siempre fluida */
+  img { max-width: 100%; height: auto; }
 
   /* ───── FADE-IN ANIMATION ───── */
   .fade-in {
